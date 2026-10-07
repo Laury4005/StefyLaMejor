@@ -217,3 +217,10 @@ print("------------------")
 cad = input("Cadena: ")
 longitud = len(cad)
 print(longitud)
+print("------------------")
+print("------------------")
+
+# 21. Tarea: Convierte una cadena a mayúsculas y otra a minúsculas sin usar condicionales ni bucles
+
+
+
