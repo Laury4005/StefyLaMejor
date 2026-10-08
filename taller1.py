@@ -214,6 +214,119 @@ print("------------------")
 
 # 20. Tarea: Calcula la longitud de una cadena sin usar condicionales ni bucles.
 
-cad = input("Cadena: ")
+# cad = input("Cadena: ")
+cad = "hola"
 longitud = len(cad)
 print(longitud)
+print("------------------")
+print("------------------")
+
+# 21. Tarea: Convierte una cadena a mayúsculas y otra a minúsculas sin usar condicionales ni bucles
+
+#cad = input("Cadena: ")
+cad = "Stefy"
+cad_may = cad.upper()
+cad_min = cad.lower()
+
+print("Mayúsculas: ",cad_may, "\nMinúsculas: ", cad_min)
+print("------------------")
+print("------------------")
+
+# 22. Tarea: Reemplaza una subcadena en una cadena principal sin usar condicionales ni bucles.
+
+cadena = "Hola mundo"
+#subcadena = input("Subcadena: ")
+#reemplazo = input("Reemplazo: ")
+subcadena = "mundo"
+reemplazo = "Milú"
+
+result = cadena.replace(subcadena, reemplazo)
+print(result)
+print("------------------")
+print("------------------")
+
+#23. Tarea: Divide una cadena en palabras sin usar condicionales ni bucles.
+# cadena = input("Cadena: ")
+cad = "pastel de chocolate"
+result = cadena.split(" ")
+print(result)
+print("------------------")
+print("------------------")
+
+#24. Tarea: Concatena tres cadenas diferentes sin usar condicionales ni bucles.
+#cad1 = input("Cadena 1: ")
+#cad2 = input("Cadena 2: ")
+#cad3 = input("Cadena 3: ")
+cad1 = "uno"
+cad2 = "uno"
+cad3 = "cinco"
+result = cad1 + " " + cad2 + " " + cad3
+print(result)
+print("------------------")
+print("------------------")
+
+#25. Tarea: Crea dos listas y extiende la primera con los elementos de la segunda sin usar condicionales ni bucles.
+list1 = [1,2,3,4,199]
+list2 = ["amarillo", "azul", "rojo"]
+list1 += list2
+print(list1)
+print("------------------")
+print("------------------")
+
+#26. Tarea: Elimina un elemento específico de una lista sin usar condicionales ni bucles.
+list1 = [1,2,3,4,199]
+# list1.remove(199)
+list1.pop(1)
+print(list1)
+print("------------------")
+print("------------------")
+
+#27. Tarea: Encuentra el índice de un elemento en una lista sin usar condicionales ni bucles.
+list1 = [1,2,3,4,199]
+ind = list1.index(199)
+print(ind)
+print("------------------")
+print("------------------")
+
+#28. Tarea: Ordena una lista de números de forma ascendente sin usar condicionales ni bucles.
+list1 = [1,2,3,4,199,5,0]
+list1.sort()
+list_ord = list1
+print(list_ord)
+print("------------------")
+print("------------------")
+
+#29. Tarea: Cuenta cuántas veces aparece un elemento en una lista sin usar condicionales ni bucles.
+list1 = [1,2,3,4,199,5,0,1,1,2]
+#cant_rep = list1.count(int(input("Elemento: ")))
+cant_rep = 0
+print(cant_rep)
+print("------------------")
+print("------------------")
+#30. Tarea: Calcula 2 elevado a la 5ta potencia sin usar condicionales ni bucles.
+potencia = 2**5
+print(potencia)
+print("------------------")
+print("------------------")
+
+#31. Tarea: Realiza la división entera de 17 entre 3 sin usar condicionales ni bucles.
+div = 17 // 3
+print("División entera: ",div)
+print("------------------")
+print("------------------")
+
+#32. Tarea: Calcula el resto de la división de 20 entre 7 sin usar condicionales ni bucles.
+mod = 20 % 7
+print("Residuo: ",mod)
+print("------------------")
+print("------------------")
+#33. Tarea: Redondea el número 3.14159 a dos decimales sin usar condicionales ni bucles.
+num = 3.14159
+num = round(num, 2)
+print(num)
+print("------------------")
+print("------------------")
+
+#34. Tarea: Realiza la operación (4 + 3) * (2 - 1) sin usar condicionales ni bucles.
+op = (4 + 3) * (2 - 1)
+print(op)
