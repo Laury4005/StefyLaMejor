@@ -1,0 +1,31 @@
+10 ejercicios nuevos
+35. Tarea: Crea una cadena "Programar en Python" y obtén solamente la palabra "Python" usando índices o slicing.
+
+36. Tarea: Crea una lista [10, 20, 30, 40, 50] y obtén los últimos tres elementos sin usar condicionales ni bucles.
+
+37. Tarea: Crea una lista [1, 2, 3] y agrega los elementos 4 y 5 usando un método de lista.
+
+38. Tarea: Crea una cadena "python es divertido" y reemplaza "divertido" por "genial".
+
+39. Tarea: Crea una cadena " Hola Python " y elimina los espacios que están al principio y al final.
+
+40. Tarea: Crea una lista [8, 3, 10, 1, 5] y ordénala de forma descendente.
+
+41. Tarea: Crea una lista [10, 20, 30, 40, 50] y calcula el valor máximo y el valor mínimo usando funciones de Python.
+
+42. Tarea: Crea una lista [5, 10, 15, 20, 25] y calcula la suma y el promedio de sus elementos.
+
+43. Tarea: Crea un diccionario con los datos de una persona:
+
+persona = {
+    "nombre": "Carlos",
+    "edad": 25,
+    "ciudad": "Cali"
+}
+Obtén e imprime solamente el nombre y la ciudad.
+
+44. Tarea: Crea dos conjuntos:
+
+conjunto1 = {1, 2, 3, 4, 5}
+conjunto2 = {4, 5, 6, 7, 8}
+Obtén la intersección de ambos conjuntos, es decir, los elementos que están presentes en los dos.
