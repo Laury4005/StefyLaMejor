@@ -63,6 +63,15 @@ elif opc == 7:
         else:
             print(num)
         num +=1
+elif opc == 77:
+    # Ejercicio: Imprime los números del 1 al 10, pero termina el bucle si encuentra el número 5.
+    num=1
+    while(num <= 10):
+        print(num)
+        num +=1
+        if num == 5:
+            print("PAILA!! 5")
+            break
 elif opc == 99:
     # Ejercicio: Utiliza el módulo math para calcular la hipotenusa de un triángulo rectángulo.
     import math as m
