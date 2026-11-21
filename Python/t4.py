@@ -4,11 +4,11 @@ if opc == 1:
     # Estructura de SELECCIÓN
     num = int(input("Num "))
     if(num > 0):
-        print("par")
+        print("positivo")
     elif(num == 0):
         print("neutro")
     else:
-        print("impar")
+        print("negativo")
 elif opc == 2:
     # Ejercicio: Solicita al usuario dos números e imprime el mayor de ellos.
     num1 = int(input("Num "))
