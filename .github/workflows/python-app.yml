@@ -1,78 +1,137 @@
-# This workflow will install Python dependencies, run tests and lint with a single version of Python
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
 name: Python application
 
 on:
   push:
-    branches: [ "develop" ]
+    branches: ["develop"]
   pull_request:
-    branches: [ "develop" ]
+    branches: ["develop"]
 
 permissions:
   contents: read
 
 jobs:
+
+  # 1. Construcción e instalación
   build:
+    name: Build
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: "3.11"
-    
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
+      - uses: actions/checkout@v4
 
-        if [ -f requirements.txt ]; then
-          python -m pip install -r requirements.txt
-        fi
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
 
-        python -m pip install flake8 pytest pytest-cov pip-audit
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
 
-        # Fix vulnerable dependencies
-        python -m pip install --upgrade "filelock>=4.2.1" "setuptools>=84.1.0"
+          if [ -f requirements.txt ]; then
+            python -m pip install -r requirements.txt
+          fi
 
-        # Verify dependency compatibility
-        python -m pip check
-    
-    - name: Verificar estructura del proyecto
-      run: |
-        echo "Directorio actual:"
-        pwd
+          python -m pip install flake8 pytest pytest-cov pip-audit
 
-        echo "Archivos y carpetas:"
-        ls -la
+          python -m pip install --upgrade \
+            "filelock>=4.2.1" \
+            "setuptools>=84.1.0"
 
-        echo "Buscar talleres:"
-        find . -type f \( \
-          -name "taller1.py" -o \
-          -name "taller2.py" -o \
-          -name "t4.py" -o \
-          -name "t5.py" \
-        \)
-    - name: Ejecutar talleres Python
-      run: |
-        cd Python
+          python -m pip check
 
-        archivos=("taller1.py" "taller2.py" "t4.py" "t5.py")
+  # 2. Búsqueda de archivos
+  search:
+    name: Búsqueda de archivos
+    runs-on: ubuntu-latest
+    needs: build
 
-        mensajes=(
-          "Primer py desarrollado"
-          "Segundo PY desarrollado"
-          "Tercer PY desarrollado"
-          "Cuarto PY desarrollado"
-        )
+    steps:
+      - uses: actions/checkout@v4
 
-        for i in "${!archivos[@]}"; do
-          echo "=================================="
-          echo "Ejecutando ${archivos[$i]}"
-          python "${archivos[$i]}"
-          echo "${mensajes[$i]}"
-          echo "=================================="
+      - name: Verificar estructura del proyecto
+        run: |
+          echo "Directorio actual:"
+          pwd
+
+          echo "Archivos y carpetas:"
+          ls -la
+
+          echo "Buscar talleres:"
+          find . -type f \( \
+            -name "taller1.py" -o \
+            -name "taller2.py" \
+          \)
+
+  # 3. Ejecución de talleres
+  exec:
+    name: Ejecutar talleres Python
+    runs-on: ubuntu-latest
+    needs: search
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Ejecutar talleres Python
+        shell: bash
+        run: |
+          if [ ! -d "Python" ]; then
+            echo "ERROR: No existe la carpeta Python"
+            exit 1
+          fi
+
+          archivos=("taller1.py" "taller2.py")
+
+          mensajes=(
+            "Primer PY desarrollado"
+            "Segundo PY desarrollado"
+          )
+
+          for i in "${!archivos[@]}"; do
+            echo "=================================="
+
+            if [ ! -f "Python/${archivos[$i]}" ]; then
+              echo "ERROR: No existe ${archivos[$i]}"
+              exit 1
+            fi
+
+            echo "Ejecutando ${archivos[$i]}"
+            python "Python/${archivos[$i]}"
+
+            echo "${mensajes[$i]}"
+            echo "=================================="
           done
-    - name: Test with pytest
-      run: |
-        pytest
+
+  # 4. Pruebas automatizadas
+  test:
+    name: Test with pytest
+    runs-on: ubuntu-latest
+    needs: exec
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          fi
+
+          pip install pytest pytest-cov
+
+      - name: Run tests
+        run: |
+          pytest
