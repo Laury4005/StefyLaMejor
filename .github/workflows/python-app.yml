@@ -45,6 +45,13 @@ jobs:
     - name: Check test coverage
       run: |
         pytest --cov=. --cov-fail-under=80
+          - name: Update vulnerable dependencies
+        run: |
+          python -m pip install --upgrade filelock setuptools
+    - name: Security audit
+      run: |
+        pip install pip-audit
+        pip-audit
     - name: Ejecutar talleres Python
       run: |
         cd python
