@@ -55,7 +55,7 @@ jobs:
         \)
     - name: Ejecutar talleres Python
       run: |
-        cd python
+        cd Python
 
         archivos=("taller1.py" "taller2.py" "t4.py" "t5.py")
 
