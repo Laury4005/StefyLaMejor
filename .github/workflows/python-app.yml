@@ -37,7 +37,22 @@ jobs:
 
         # Verify dependency compatibility
         python -m pip check
+    
+    - name: Verificar estructura del proyecto
+      run: |
+        echo "Directorio actual:"
+        pwd
 
+        echo "Archivos y carpetas:"
+        ls -la
+
+        echo "Buscar talleres:"
+        find . -type f \( \
+          -name "taller1.py" -o \
+          -name "taller2.py" -o \
+          -name "t4.py" -o \
+          -name "t5.py" \
+        \)
     - name: Ejecutar talleres Python
       run: |
         cd python
